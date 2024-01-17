@@ -1,12 +1,10 @@
 import { Pagination } from '@/components/ui/pagination'
-import { Preloader } from '@/components/ui/preloader'
 import { CardList } from '@/pages/cards/cardsList/cardsList'
 import { EmptyDeck } from '@/pages/cards/emptyDeck/emptyDeck'
 import { HeaderCards } from '@/pages/cards/headerCards/headerCards'
 import { useCards } from '@/pages/cards/useCards'
 import { CardActions } from '@/pages/deck-modals/create-card/cardActions'
 import { options } from '@/pages/decks/decksBody/selectorConstants.types'
-import { useGetCardByIdQuery } from '@/services/cards/cards.service'
 
 type PropsType = {
   idDeck: string
