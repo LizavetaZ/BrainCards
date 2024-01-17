@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { ComponentPropsWithoutRef, ReactNode, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import Modal, { ModalProps } from '@/components/ui/modal/modal'
+import Modal from '@/components/ui/modal/modal'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
-import { Meta, Story } from '@storybook/react'
+import * as Dialog from '@radix-ui/react-dialog'
+import { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta = {
+const meta = {
   args: {
     children: (
       <>
@@ -22,16 +23,21 @@ const meta: Meta = {
     ),
   },
   component: Modal,
+  tags: ['autodocs'],
   title: 'Components/Modal',
-}
+} satisfies Meta<typeof Modal>
 
 export default meta
 
 type ModalDefaultArgs = {
-  title: string
-}
+  children: ReactNode
+  className?: string
+  title?: string
+} & Omit<ComponentPropsWithoutRef<typeof Dialog.Root>, 'children'>
 
-const ModalDefaultTemplate: Story<ModalProps & ModalDefaultArgs> = args => {
+type DefaultModalStory = StoryObj<ModalDefaultArgs>
+
+export const ModalDefault: DefaultModalStory = (args: ModalDefaultArgs) => {
   const [open, setOpen] = useState(false)
 
   const handleOpenChange = () => {
@@ -53,7 +59,18 @@ const ModalDefaultTemplate: Story<ModalProps & ModalDefaultArgs> = args => {
   )
 }
 
-export const ModalDefault = ModalDefaultTemplate.bind({})
 ModalDefault.args = {
-  title: 'Modal Title',
+  children: (
+    <>
+      <ModalWithContent>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temper ut labore et
+        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est labor.
+      </ModalWithContent>
+      <ModalWithButton titleButton={'New card'} />
+    </>
+  ),
+  title: 'My Modal',
 }
