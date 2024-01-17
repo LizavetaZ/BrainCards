@@ -13,20 +13,8 @@ const meta: Meta = {
 
 export default meta
 
-type DefaultPaginationArgs = {
-  availablePageSizes: number[]
-  currentPage: number
-  onChangePageSize: (pageSize: number | string) => void
-  onPageChange: (page: number | string) => void
-  pageSize: number
-  siblingCount: number
-  totalCount: number
-}
-
 type DefaultPaginationComponentStory = StoryObj<PaginationProps>
-export const PaginationComponent: DefaultPaginationComponentStory = (
-  args: DefaultPaginationArgs
-) => {
+export const PaginationComponent: DefaultPaginationComponentStory = args => {
   const [page, setPage] = useState<number>(args.currentPage)
   const [pageSize, setPageSize] = useState(args.pageSize)
 
@@ -52,7 +40,6 @@ export const PaginationComponent: DefaultPaginationComponentStory = (
     </>
   )
 }
-
 PaginationComponent.args = {
   availablePageSizes: options,
   currentPage: 1,
