@@ -48,6 +48,8 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
     orderBy,
   })
 
+  // const onChangePlay = (idDeck: string) => {}
+
   if (error) {
     return (
       <>
@@ -123,7 +125,7 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
             onChangePageSize={handleItemsPerPageSet}
             onPageChange={handleCurrentPageSet}
             pageSize={itemsPerPage}
-            totalCount={data!.pagination.totalItems || 0}
+            totalCount={data?.pagination.totalItems || 0}
           />
         </>
       )}

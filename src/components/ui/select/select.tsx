@@ -15,7 +15,7 @@ export type OptionsType = {
 
 type SelectorPropsType = {
   className?: string
-  options: number[] | string[]
+  options: Array<number | string>
   title?: string
   variant?: 'default' | 'pagination'
 } & SelectRadix.SelectProps

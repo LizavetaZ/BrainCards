@@ -22,9 +22,9 @@ const loginSchema = z.object({
 })
 
 type PropsType = {
-  idDeck: string
+  idDeck?: string
   isPrivate: boolean | undefined
-  name: string | undefined
+  name?: string
   open: boolean
   setOpen: (isOpen: boolean) => void
 }
@@ -39,7 +39,7 @@ export const EditDeck = ({ idDeck, isPrivate, name, open, setOpen }: PropsType) 
     resolver: zodResolver(loginSchema),
   })
   const onSubmit = async (dateForm: UpdateDeck) => {
-    await updateDeck({ ...dateForm, id: idDeck })
+    await updateDeck({ ...dateForm, id: idDeck! })
     toast.success('success')
     setOpen(false)
   }
