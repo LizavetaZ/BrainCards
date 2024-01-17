@@ -26,7 +26,7 @@ export type ProfileProps = {
 }
 
 export const Profile = forwardRef<HTMLInputElement, ProfileProps>(
-  ({ avatar, email, logout, name, onSubmit }, ref) => {
+  ({ avatar, email, logout, name, onSubmit }) => {
     const [modeOn, setModeOn] = useState(false)
     const onSubmitHandler = (data: FormValues) => {
       onSubmit(data)

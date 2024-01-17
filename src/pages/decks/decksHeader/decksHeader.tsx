@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { Input } from '@/components/ui/Input'
-import { Loader } from '@/components/ui/Loader/Loader'
 import { Button } from '@/components/ui/button'
 import { TrashOutline } from '@/components/ui/icons/trash-outline/TrashOutline'
 import { Preloader } from '@/components/ui/preloader'
@@ -35,7 +34,7 @@ const DecksHeader: FC<DeckHeaderType> = ({
   sliderCardsValues,
   tabSwitcherPosition,
 }) => {
-  const { data, error, isError, isLoading } = useGetDecksQuery({})
+  const { data, error, isLoading } = useGetDecksQuery({})
   const searchField = useAppSelector(selectSearchFieldSetting)
   const dispatch = useAppDispatch()
   const { maxCardsCount, minCardsCount } = useAppSelector(selectSliderValues)
@@ -60,7 +59,6 @@ const DecksHeader: FC<DeckHeaderType> = ({
     return (
       <>
         <Typography variant={'large'}>Some error has occured</Typography>
-        <Typography variant={'large'}>{error.data.message}</Typography>
       </>
     )
   }

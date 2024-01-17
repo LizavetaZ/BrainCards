@@ -40,7 +40,7 @@ export type GetDecksResponseItems = {
   cardsCount: number
   cover?: null | string
   created: string
-  id: string
+  id: string | undefined
   isBlocked?: boolean | null
   isDeleted?: boolean | null
   isPrivate: boolean
@@ -62,7 +62,7 @@ export type GetDecksArgs = {
 }
 
 export type GetDeckByIdArgs = {
-  id: string
+  id: string | undefined
 }
 
 export type CreateDeckType = {
@@ -93,7 +93,7 @@ export type DeckDeleteResponse = {
 export type GetCardsByDeckId = {
   answer?: string
   currentPage?: number
-  id: string
+  id: string | undefined
   itemsPerPage?: number
   orderBy?: string
   question?: string
@@ -125,7 +125,7 @@ export type CardCreation = {
 }
 
 export type GetCardsForLearn = {
-  id: string
+  id: string | undefined
   previousCardId?: string
 }
 export type GetLearnResponse = {
@@ -134,7 +134,7 @@ export type GetLearnResponse = {
   answerVideo: string
   created: string
   deckId: string
-  id: string
+  id: string | undefined
   question: string
   questionImg: string
   questionVideo: string
@@ -145,7 +145,7 @@ export type GetLearnResponse = {
 }
 
 export type RateSave = {
-  cardId: string
+  cardId: string | undefined
   grade: number
-  id: string
+  id: string | undefined
 }

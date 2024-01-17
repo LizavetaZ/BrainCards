@@ -18,16 +18,13 @@ export type HeaderInfoType = {
   avatar?: null | string
   email?: string
   isLoggedIn: boolean
-  logout: () => void
+  logout?: () => void
   name?: string
 } & ComponentPropsWithoutRef<'header'>
 
 export const Header = forwardRef<HTMLHeadElement, HeaderInfoType>(
-  ({ avatar, email, isLoggedIn, name }, ref) => {
+  ({ avatar, email, isLoggedIn, logout, name }) => {
     const navigate = useNavigate()
-    const onSignOutClickHandler = () => {
-      navigate('/login')
-    }
     const onProfileClickHandler = () => {
       navigate('/profile')
     }
@@ -44,7 +41,11 @@ export const Header = forwardRef<HTMLHeadElement, HeaderInfoType>(
             <span className={s.dropDownGroup}>
               <Typography variant={'subtitle1'}>{name}</Typography>
               <DropDownMenu trigger={<Avatar name={name} src={avatar ?? defaultAvatar} />}>
-                <MenuContentWithAvatar avatar={avatar} name={name} url={email} />
+                <MenuContentWithAvatar
+                  avatar={avatar}
+                  name={name as string}
+                  url={email as string}
+                />
                 <MenuContent
                   onClick={onProfileClickHandler}
                   svgIcon={<PersonIcon />}
@@ -52,7 +53,7 @@ export const Header = forwardRef<HTMLHeadElement, HeaderInfoType>(
                 />
                 <MenuContent
                   isLine={false}
-                  onClick={onSignOutClickHandler}
+                  onClick={logout}
                   svgIcon={<LogOut />}
                   title={'Sign Out'}
                 />
@@ -60,7 +61,7 @@ export const Header = forwardRef<HTMLHeadElement, HeaderInfoType>(
             </span>
           </div>
         ) : (
-          <Button className={s.SignButton} onClick={onSignOutClickHandler} variant={'primary'}>
+          <Button className={s.SignButton} onClick={logout} variant={'primary'}>
             Sign in
           </Button>
         )}

@@ -8,13 +8,13 @@ import { usePagination } from '@/components/ui/pagination/usePagination'
 import s from './Pagination.module.scss'
 
 export type PaginationProps = {
-  availablePageSizes: (number | string)[]
+  availablePageSizes: Array<number | string>
   currentPage: number
   onChangePageSize: (pageSize: number | string) => void
   onPageChange: (page: number | string) => void
   pageSize: number
   siblingCount?: number
-  totalCount: number | undefined
+  totalCount: number
 }
 
 export const Pagination: FC<PaginationProps> = ({

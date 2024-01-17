@@ -6,7 +6,7 @@ import { Typography } from '@/components/ui/typography'
 import s from './PaginationControls.module.scss'
 
 export type PaginationControlsProps = {
-  currentOptions: (number | string)[]
+  currentOptions: Array<number | string>
   onChangePageSize: (pageSize: number | string) => void
 }
 

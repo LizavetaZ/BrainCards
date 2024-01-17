@@ -2,7 +2,7 @@ import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVar
 import { useControlCard } from '@/pages/cards/controlCard/useControlCard'
 import { CardActions } from '@/pages/deck-modals/create-card/cardActions'
 import { DeleteModal } from '@/pages/deck-modals/delete-module/deleteModal'
-import { CardResponse } from '@/src/services/decks.types'
+import { CardResponse } from '@/services/decks/decks.types'
 
 type ControlCardProps = {
   card: CardResponse

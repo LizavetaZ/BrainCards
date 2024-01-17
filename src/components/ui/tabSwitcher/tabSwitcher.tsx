@@ -17,7 +17,7 @@ export type ValuesPosition = {
   value: string
 }
 export const TabSwitcher = forwardRef<ElementRef<typeof TabSwitcherRadix.Root>, TabSwitcherProps>(
-  ({ disable, onValueChange, value, valuesCollection }, ref) => {
+  ({ disable, onValueChange, value, valuesCollection }) => {
     return (
       <TabSwitcherRadix.Root
         className={s.toggleGroup}
