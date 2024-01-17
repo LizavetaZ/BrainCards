@@ -54,7 +54,7 @@ export const CardList = ({ handleSortChange, isMyDeck, items }: CardListProps) =
               <Table.Cell>
                 <CellVariant.WithImage src={card.answerImg} title={card.answer} />
               </Table.Cell>
-              <Table.Cell>{card.updated}</Table.Cell>
+              <Table.Cell>{new Date(card.updated).toLocaleDateString()}</Table.Cell>
               <Table.Cell>
                 <CellVariant.Stars value={card.grade} />
               </Table.Cell>
