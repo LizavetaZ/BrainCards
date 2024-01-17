@@ -12,16 +12,29 @@ const meta: Meta = {
 }
 
 export default meta
-type Story = StoryObj<typeof meta>
-export const PaginationComponent: Story = (args: PaginationProps) => {
-  const [page, setPage] = useState<number>(1)
-  const [pageSize, setPageSize] = useState(10)
+
+type DefaultPaginationArgs = {
+  availablePageSizes: number[]
+  currentPage: number
+  onChangePageSize: () => void
+  onPageChange: () => void
+  pageSize: number
+  siblingCount: number
+  totalCount: number
+}
+
+type DefaultPaginationComponentStory = StoryObj<PaginationProps>
+export const PaginationComponent: DefaultPaginationComponentStory = (
+  args: DefaultPaginationArgs
+) => {
+  const [page, setPage] = useState<number>(args.currentPage)
+  const [pageSize, setPageSize] = useState(args.pageSize)
 
   return (
     <>
       <Pagination
         {...args}
-        availablePageSizes={options}
+        availablePageSizes={args.availablePageSizes}
         currentPage={page}
         onChangePageSize={pageSize => setPageSize(+pageSize)}
         onPageChange={page => setPage(+page)}
@@ -31,4 +44,14 @@ export const PaginationComponent: Story = (args: PaginationProps) => {
       />
     </>
   )
+}
+
+PaginationComponent.args = {
+  availablePageSizes: options,
+  currentPage: 1,
+  onChangePageSize: () => {},
+  onPageChange: () => {},
+  pageSize: 10,
+  siblingCount: 2,
+  totalCount: 10000,
 }
