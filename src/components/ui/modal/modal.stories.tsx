@@ -16,9 +16,9 @@ const meta = {
 
 export default meta
 
-type DefaultModalStory = StoryObj<ModalProps>
+type Story = StoryObj<typeof meta>
 
-export const ModalDefault: DefaultModalStory = (args: ModalProps) => {
+export const ModalDefault: Story = (args: ModalProps) => {
   const [open, setOpen] = useState(false)
 
   return (
