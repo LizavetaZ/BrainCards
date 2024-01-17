@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Pagination } from '@/components/ui/pagination/Pagination'
 import { options } from '@/pages/decks/decksBody/selectorConstants.types'
-import { Meta, StoryObj } from '@storybook/react'
+import { Meta } from '@storybook/react'
 
 const meta = {
   component: Pagination,
