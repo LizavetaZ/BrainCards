@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Pagination } from '@/components/ui/pagination/Pagination'
 import { options } from '@/pages/decks/decksBody/selectorConstants.types'
-import { Meta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Pagination,
@@ -11,8 +11,7 @@ const meta = {
 } satisfies Meta<typeof Pagination>
 
 export default meta
-
-export const Defalut = {
+export const DefaultPagination = {
   render: () => {
     const [pageSize, setPageSize] = useState(10)
     const [currentPage, setCurrentPage] = useState<number>(1)
