@@ -38,7 +38,7 @@ type DefaultSwitcherArgs = {
 
 type DefaultSwitcherStory = StoryObj<DefaultSwitcherArgs>
 
-export const DefaultSwitcher: DefaultSwitcherStory = args => {
+export const DefaultSwitcher: DefaultSwitcherStory = (args: DefaultSwitcherArgs) => {
   const [value, setValue] = useState(args?.value || '')
 
   const handleValueChange = (newValue: string) => {

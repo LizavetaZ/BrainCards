@@ -14,7 +14,7 @@ export type PaginationProps = {
   onPageChange: (page: number | string) => void
   pageSize: number
   siblingCount?: number
-  totalCount: number | undefined
+  totalCount: number
 }
 
 export const Pagination: FC<PaginationProps> = ({
@@ -44,7 +44,7 @@ export const Pagination: FC<PaginationProps> = ({
     onPageChange(currentPage - 1)
   }
   const lastPage = paginationRange[paginationRange.length - 1]
-  const currentOptions = availablePageSizes.filter(el => totalCount / +el > 1)
+  const currentOptions = availablePageSizes
 
   return (
     <div className={s.container}>

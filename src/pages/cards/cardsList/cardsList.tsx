@@ -5,7 +5,7 @@ import { ArrowUp } from '@/components/ui/icons/arrowUp/ArrowUp'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { ControlCard } from '@/pages/cards/controlCard/controlCard'
-import { CardResponse } from '@/src/services/decks.types'
+import { CardResponse } from '@/services/decks/decks.types'
 
 import s from './cardsList.module.scss'
 

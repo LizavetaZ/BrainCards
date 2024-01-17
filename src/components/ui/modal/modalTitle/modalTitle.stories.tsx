@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const ModalTitleDefault: Story = {
   args: {
-    setOpen: () => alert('click'),
+    onOpenChange: () => {},
     title: 'Modal Title Default',
   },
 }

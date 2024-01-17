@@ -7,7 +7,7 @@ import s from './MenuContent.module.css'
 
 type PropsType = {
   isLine?: boolean
-  onClick: () => void
+  onClick?: () => void
   svgIcon: ReactNode
   title: string
 }

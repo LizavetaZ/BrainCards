@@ -28,7 +28,7 @@ export const Layout = () => {
           name={data?.name}
         />
       ) : (
-        <Header isLoggedIn={false} logout={onLogoutHandler} />
+        <Header isLoggedIn={false} />
       )}
       {false && <Loader />}
       <div className={s.container}>

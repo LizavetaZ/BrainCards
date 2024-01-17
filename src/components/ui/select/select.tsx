@@ -8,9 +8,14 @@ import '@radix-ui/themes/styles.css'
 
 import s from './select.module.scss'
 
+export type OptionsType = {
+  title: string
+  value: string
+}
+
 type SelectorPropsType = {
   className?: string
-  options: (number | string)[]
+  options: number[] | string[]
   title?: string
   variant?: 'default' | 'pagination'
 } & SelectRadix.SelectProps

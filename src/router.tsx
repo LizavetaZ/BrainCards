@@ -92,11 +92,6 @@ function PrivateRoutes() {
 
   return !isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
-// function PublicRoutes() {
-//   const isAuthenticated = useAuthenticationCheck()
-//
-//   return isAuthenticated ? <Outlet /> :
-// }
 
 export const Router = () => {
   return <RouterProvider router={router} />

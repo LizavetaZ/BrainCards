@@ -38,7 +38,7 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
   const dispatch = useAppDispatch()
   const { data: userData } = useGetMeQuery()
   const currentPageValue = tabSwitcherPosition === 'left' ? 1 : currentPage
-  const { data, error, isError, isLoading } = useGetDecksQuery({
+  const { data, error, isLoading } = useGetDecksQuery({
     authorId: tabSwitcherPosition === 'left' ? userData?.id : undefined,
     currentPage: currentPageValue,
     itemsPerPage,
@@ -52,7 +52,6 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
     return (
       <>
         <Typography variant={'large'}>Some error has occured</Typography>
-        <Typography variant={'large'}>{error.data?.message}</Typography>
       </>
     )
   }
@@ -124,7 +123,7 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
             onChangePageSize={handleItemsPerPageSet}
             onPageChange={handleCurrentPageSet}
             pageSize={itemsPerPage}
-            totalCount={data?.pagination.totalItems}
+            totalCount={data!.pagination.totalItems || 0}
           />
         </>
       )}

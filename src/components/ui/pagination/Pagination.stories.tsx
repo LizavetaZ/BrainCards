@@ -22,7 +22,7 @@ export const PaginationComponent: Story = (args: PaginationProps) => {
   const [page, setPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState(10)
   const options: OptionsType[] = [
-    { title: '10', value: '10' },
+    { title: '10', value: 'z10' },
     { title: '20', value: '20' },
     { title: '30', value: '30' },
     { title: '50', value: '50' },
