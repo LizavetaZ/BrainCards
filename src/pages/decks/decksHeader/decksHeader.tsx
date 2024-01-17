@@ -65,47 +65,49 @@ const DecksHeader: FC<DeckHeaderType> = ({
 
   return (
     <div className={s.body}>
-      <div className={s.header}>
-        <Typography className={s.packsListText} variant={'large'}>
-          Packs List
-        </Typography>
-        <CreateDeck disabled={isLoading} />
-      </div>
       {isLoading ? (
         <Typography className={s.loading} variant={'large'}>
           <Preloader />
         </Typography>
       ) : (
-        <div className={s.searchFields}>
-          <Input
-            className={s.inputField}
-            onValueChange={handleSearchField}
-            type={'search'}
-            value={searchField}
-          />
-          <div className={s.buttons}>
-            <Typography variant={'body2'}>Show packs cards</Typography>
-            <TabSwitcher
-              onValueChange={value => setTabSwitcherPosition(value)}
-              value={tabSwitcherPosition}
-              valuesCollection={collection}
+        <>
+          <div className={s.header}>
+            <Typography className={s.packsListText} variant={'large'}>
+              Packs List
+            </Typography>
+            <CreateDeck disabled={isLoading} />
+          </div>
+          <div className={s.searchFields}>
+            <Input
+              className={s.inputField}
+              onValueChange={handleSearchField}
+              type={'search'}
+              value={searchField}
             />
+            <div className={s.buttons}>
+              <Typography variant={'body2'}>Show packs cards</Typography>
+              <TabSwitcher
+                onValueChange={value => setTabSwitcherPosition(value)}
+                value={tabSwitcherPosition}
+                valuesCollection={collection}
+              />
+            </div>
+            <div className={s.sliderGroup}>
+              <Typography variant={'body2'}>Number of cards</Typography>
+              <Slider
+                maxValue={Number(data?.maxCardsCount)}
+                onSliderValuesChange={handleSliderChange}
+                values={[sliderCardsValues.minCardsCount, sliderCardsValues.maxCardsCount]}
+              />
+            </div>
+            <div>
+              <Button className={s.clearFilter} onClick={handlerFilterClean} variant={'secondary'}>
+                <TrashOutline className={s.trashIcon} />
+                <span className={s.clearTitle}>Clear Filter</span>
+              </Button>
+            </div>
           </div>
-          <div className={s.sliderGroup}>
-            <Typography variant={'body2'}>Number of cards</Typography>
-            <Slider
-              maxValue={Number(data?.maxCardsCount)}
-              onSliderValuesChange={handleSliderChange}
-              values={[sliderCardsValues.minCardsCount, sliderCardsValues.maxCardsCount]}
-            />
-          </div>
-          <div>
-            <Button className={s.clearFilter} onClick={handlerFilterClean} variant={'secondary'}>
-              <TrashOutline className={s.trashIcon} />
-              <span className={s.clearTitle}>Clear Filter</span>
-            </Button>
-          </div>
-        </div>
+        </>
       )}
     </div>
   )
