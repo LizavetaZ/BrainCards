@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import Modal, { ModalProps } from '@/components/ui/modal/modal'
+import Modal from '@/components/ui/modal/modal'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 
@@ -16,9 +16,15 @@ const meta = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type ModalDefaultArgs = {
+  onClick: () => void
+  onOpenChange: () => void
+  title: string
+}
 
-export const ModalDefault: Story = (args: ModalProps) => {
+type ModalDefaultStory = StoryObj<ModalDefaultArgs>
+
+export const ModalDefault: ModalDefaultStory = (args: ModalDefaultArgs) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -32,7 +38,6 @@ export const ModalDefault: Story = (args: ModalProps) => {
         Open Modal
       </Button>
       <Modal
-        title={'dcdcdcd'}
         {...args}
         onOpenChange={() => {
           setOpen(false)
