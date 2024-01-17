@@ -11,23 +11,50 @@ const meta = {
 } satisfies Meta<typeof Pagination>
 
 export default meta
-export const DefaultPagination = {
-  render: () => {
-    const [pageSize, setPageSize] = useState(10)
-    const [currentPage, setCurrentPage] = useState<number>(1)
+export const DefaultPagination: Meta = {
+  argTypes: {
+    onChangePageSize: { action: 'onChangePageSize' },
+    onPageChange: { action: 'onPageChange' },
+  },
+  args: {
+    availablePageSizes: options,
+    currentPage: 1,
+    onChangePageSize: () => {},
+    onPageChange: () => {},
+    pageSize: 10,
+    siblingCount: 2,
+    totalCount: 10000,
+  },
+  component: Pagination,
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
+  render: args => {
+    const [pageSize, setPageSize] = useState(args.pageSize)
+    const [currentPage, setCurrentPage] = useState<number>(args.currentPage)
+
+    const handlePageSizeChange = (pageSize: number | string) => {
+      setPageSize(+pageSize)
+    }
+
+    const handlePageChange = (page: number | string) => {
+      setCurrentPage(+page)
+    }
 
     return (
       <>
         <Pagination
-          availablePageSizes={options}
+          availablePageSizes={args.availablePageSizes}
           currentPage={currentPage}
-          onChangePageSize={pageSize => setPageSize(+pageSize)}
-          onPageChange={(currentPage: number | string) => setCurrentPage(+currentPage)}
+          onChangePageSize={handlePageSizeChange}
+          onPageChange={handlePageChange}
           pageSize={pageSize}
-          siblingCount={2}
-          totalCount={10000}
+          siblingCount={args.siblingCount}
+          totalCount={args.totalCount}
         />
       </>
     )
   },
+  tags: ['autodocs'],
+  title: 'Components/Pagination',
 }

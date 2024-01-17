@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react'
+import type { Meta, Story } from '@storybook/react'
 
 import { useState } from 'react'
 
@@ -16,34 +16,31 @@ const meta = {
 
 export default meta
 
-export const ModalWithTitle = {
-  render: (args: ModalProps) => {
-    const [open, setOpen] = useState(false)
+export const ModalWithTitle: Story<ModalProps> = args => {
+  const [open, setOpen] = useState(false)
 
-    return (
-      <>
-        <Button
-          as={'button'}
-          onClick={() => setOpen(true)}
-          style={{ width: '100px' }}
-          variant={'primary'}
-        >
-          Open Modal
-        </Button>
-        <Modal {...args} onOpenChange={setOpen} open={open} title={'dcdcdcd'}>
-          <>
-            <ModalWithContent>
-              Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod temper ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est labor.
-            </ModalWithContent>
-            <ModalWithButton titleButton={'New card'} />
-          </>
-        </Modal>
-      </>
-    )
-  },
+  return (
+    <>
+      <Button
+        as={'button'}
+        onClick={() => setOpen(true)}
+        style={{ width: '100px' }}
+        variant={'primary'}
+      >
+        Open Modal
+      </Button>
+      <Modal {...args} onOpenChange={setOpen} open={open} title={'dcdcdcd'}>
+        <>
+          <ModalWithContent>
+            Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod temper ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est labor.
+          </ModalWithContent>
+          <ModalWithButton titleButton={'New card'} />
+        </>
+      </Modal>
+    </>
+  )
 }
